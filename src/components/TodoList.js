@@ -4,13 +4,12 @@ import TodoItem from "./TodoItem";
 import "./project.css";
 function TodoList() {
   const [todos, setTodos] = useState(
-    []
-    // JSON.parse(localStorage.getItem("TODOLOCAK") || "")
+    JSON.parse(localStorage.getItem("TODOLOCAK")) || []
   );
 
-  // useEffect(() => {
-  //   localStorage.setItem("TODOLOCAK", JSON.stringify(todos));
-  // }, [todos]);
+  useEffect(() => {
+    localStorage.setItem("TODOLOCAK", JSON.stringify(todos));
+  }, [todos]);
   // console.log(JSON.parse(localStorage.getItem("TODOLOCAK")));
   const addTodo = todo => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
