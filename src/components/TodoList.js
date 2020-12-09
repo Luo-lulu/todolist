@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
 import "./project.css";
+import "antd/dist/antd.css";
+
+import { Row, Col } from "antd";
 function TodoList() {
   const [todos, setTodos] = useState(
     JSON.parse(localStorage.getItem("TODOLOCAK")) || []
@@ -44,16 +47,18 @@ function TodoList() {
   };
 
   return (
-    <div className="todolist">
-      <h1>What's gonna do ?</h1>
-      <TodoForm onSubmit={addTodo} />
-      <TodoItem
-        todos={todos}
-        doneTodo={doneTodo}
-        removeTodo={removeTodo}
-        editTodo={editTodo}
-      />
-    </div>
+    <Row justify="center">
+      <Col sm={20} md={16} className="todolist">
+        <div className="title__text">What's gonna do ?</div>
+        <TodoForm onSubmit={addTodo} />
+        <TodoItem
+          todos={todos}
+          doneTodo={doneTodo}
+          removeTodo={removeTodo}
+          editTodo={editTodo}
+        />
+      </Col>
+    </Row>
   );
 }
 
